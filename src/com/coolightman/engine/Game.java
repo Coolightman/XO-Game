@@ -1,96 +1,114 @@
 package com.coolightman.engine;
 
 import com.coolightman.model.*;
+
 import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Game {
-    private String moveXY;
-    private int boardSize = 3;
+    private int BOARD_SIZE=3;
+    private int FULL_BOARD_SIZE = BOARD_SIZE*BOARD_SIZE;
     private ArrayList<Player> playersList = new ArrayList<>();
+//      создание поля
 
-    //    создание поля
-    private Board playBoard = new Board(boardSize);
+    private Board playBoard = new Board();
 
-    public void StartGame(){
-//        создание игроков
+    public Game(){
+//      создание игроков
         Player player1 = new Player();
         playersList.add(player1);
-        player1.setPlayerFigure("cross");
+        player1.setPlayerFigure("X");
 
         Player player2 = new Player();
         playersList.add(player2);
-        player2.setPlayerFigure("zero");
+        player2.setPlayerFigure("O");
+    }
 
-        System.out.println("****Game Begin.**** " +
-                "\nChoose your move by \"XY\" format,\n" +
-                "where X - number of line from [0:"+(boardSize-1)+"],\n" +
-                "where Y - number of column from [0:"+(boardSize-1)+"]");
+    //  основной игровой метод
+    public void StartGame(){
 
-//************************************************************************************************************
+//      задаем очередность ходов игроков
+        int[] playersMoveTurn = playersMoveTurnBuilder();
+
+        System.out.println(
+                "Choose your move by \"XY\" format\n" +
+                        "where X - number of line from [0:2]\n" +
+                        "where Y - number of column from [0:2]");
+        playBoard.printBoardExample();
+        System.out.println();
+        System.out.println("****Game START**** ");
 
 //      основной игровой цикл
-//      цикл работает пока не появиться победитель или будет ничья
+//      цикл работает пока не появится победитель или не будет ничья
         boolean haveWinner = false;
         do{
-//          задаем очередность ходов игроков
-            int[] playersMovesTurn = {0, 1, 0, 1, 0, 1, 0, 1, 0};
+//          счетчик "успешных" ходов
             int moveCounter=0;
 
 //          цикл перебора очередности ходов игроков
-            for (int playerMove:playersMovesTurn) {
-                System.out.println("Player "+playersList.get(playerMove).getNamePlayer()+" do your move:");
+            for (int playingPlayer:playersMoveTurn) {
+                System.out.println("Player "+playersList.get(playingPlayer).getNamePlayer()+" do your move:");
 
-//              метод получения хода игрока, его проверка и вставка в поле
-                getMoveAndChangeCellFigure(playerMove);
-
-//              рисуем получившееся поле
-                playBoard.printBoard();
+                getMoveAndChangeCellFigure(playingPlayer);
                 moveCounter++;
 
-//              проверяем наличие победителя
+                clearConsole();
+
+                playBoard.printBoard();
+                System.out.println();
+
                 if (checkWinner()){
                     haveWinner = true;
-                    System.out.println("Congratulation! We have winner "+playersList.get(playerMove).getNamePlayer());
+                    System.out.println("Congratulation! "+playersList.get(playingPlayer).getNamePlayer()+" is WIN!");
                     break;
                 }
             }
 
 //          проверяем на ничью
-            if (moveCounter==9 && !checkWinner()){
+            if (moveCounter==9 && !haveWinner){
                 System.out.println("We have not winner =(");
                 break;
             }
         }
         while (!haveWinner);
-        System.out.println("Game End");
+        System.out.println("Game End\n");
     }
-//************************************************************************************************************
-//  методы игрового цикла
 
-    private void getMove(){
+    //  методы игрового цикла
+//  метод получения хода игрока из командной строки
+    private String getPlayerMove(){
+        String moveXY;
         Scanner scanner = new Scanner(System.in);
-        this.moveXY = scanner.next();
+        moveXY = scanner.next();
+        return moveXY;
     }
 
+    //  метод получения и обработки хода игрока, его проверка и вставка в соотв ячейку фигуры игрока
     private void getMoveAndChangeCellFigure(int playerNumb){
 
-        boolean cellFigureChangeSuccess = false;
+//      цикл требует от игрока хода пока не будет успешно заменена фигура в какой-либо ячейке
+        boolean figureInCellChangedSuccess = false;
         do {
-            getMove();
-            if (checkCellExist()){
+            String playerXYMove = getPlayerMove();
 
-                int cellNumb = findCellByXYCords(moveXY);
-                if (checkCellEmpty(cellNumb)){
+            if (checkCellExist(playerXYMove)){
+
+                int cellNumb = findCellByXYCords(playerXYMove);
+
+                if (checkingCellEmpty(cellNumb)){
+
+//                  запись фигуры играющего игрока в соотв-ую ячейку
                     playBoard.getCellList().get(cellNumb).setFigure(playersList.get(playerNumb).getPlayerFigure());
-                    cellFigureChangeSuccess = true;
+                    figureInCellChangedSuccess = true;
                 }
             }
-        } while (!cellFigureChangeSuccess);
+        } while (!figureInCellChangedSuccess);
     }
 
-    private boolean checkCellExist(){
+    //  метод проверки на наличие по таким координатам ячейки на поле
+    private boolean checkCellExist(String moveXY){
         boolean cellExist;
+
         if (moveXY.equals("00")||moveXY.equals("10")||moveXY.equals("20")||moveXY.equals("01")||moveXY.equals("11")
                 ||moveXY.equals("21")||moveXY.equals("02")||moveXY.equals("12")||moveXY.equals("22")){
             cellExist=true;
@@ -99,21 +117,27 @@ public class Game {
             System.out.println("Wrong coords, try again:");
             cellExist = false;
         }
+
         return cellExist;
     }
 
+    //  метод поиска ячейки соотв-ей ходу игрока
     private int findCellByXYCords(String moveXY){
         int cellNumb=0;
+
         for (int i = 0; i<9 ; i++){
             if (playBoard.getCellList().get(i).getCellXYName().equals(moveXY)) {
                 cellNumb=i;
             }
         }
+
         return cellNumb;
     }
 
-    private boolean checkCellEmpty(int cellNumb){
+    //  метод проверка "занятости" ячейки
+    private boolean checkingCellEmpty(int cellNumb){
         boolean cellIsEmpty;
+
         if (playBoard.getCellList().get(cellNumb).getFigure().equals("_")){
             cellIsEmpty = true;
         }
@@ -121,41 +145,78 @@ public class Game {
             System.out.println("Cell is busy, try again:");
             cellIsEmpty = false;
         }
+
         return cellIsEmpty;
     }
 
+    //  метод проверки наличия победителя
     private boolean checkWinner(){
         boolean haveWinner = false;
+
+//      выйгрышные комбинации
+        int winVar[][]= {{0,1,2}, {0,3,6}, {0,4,8}, {1,4,7}, {2,4,6}, {2,5,8}, {3,4,5}, {6,7,8}};
+
         ArrayList<String> figureList = new ArrayList<>();
-        for (int i=0; i<9; i++){
+
+//      создание списка текущих фигур
+        for (int i=0; i<FULL_BOARD_SIZE; i++){
             figureList.add(playBoard.getCellList().get(i).getFigure());
         }
 
-        if (figureList.get(0).equals(figureList.get(1)) && figureList.get(1).equals(figureList.get(2)) && !figureList.get(0).equals("_")){
-            haveWinner = true;
-        }
-        if (figureList.get(0).equals(figureList.get(3)) && figureList.get(3).equals(figureList.get(6)) && !figureList.get(0).equals("_")){
-            haveWinner = true;
-        }
-        if (figureList.get(0).equals(figureList.get(4)) && figureList.get(4).equals(figureList.get(8)) && !figureList.get(0).equals("_")){
-            haveWinner = true;
-        }
-        if (figureList.get(1).equals(figureList.get(4)) && figureList.get(4).equals(figureList.get(7)) && !figureList.get(1).equals("_")){
-            haveWinner = true;
-        }
-        if (figureList.get(2).equals(figureList.get(4)) && figureList.get(4).equals(figureList.get(6)) && !figureList.get(2).equals("_")){
-            haveWinner = true;
-        }
-        if (figureList.get(2).equals(figureList.get(5)) && figureList.get(5).equals(figureList.get(8)) && !figureList.get(2).equals("_")){
-            haveWinner = true;
-        }
-        if (figureList.get(3).equals(figureList.get(4)) && figureList.get(4).equals(figureList.get(5)) && !figureList.get(3).equals("_")){
-            haveWinner = true;
-        }
-        if (figureList.get(6).equals(figureList.get(7)) && figureList.get(7).equals(figureList.get(8)) && !figureList.get(6).equals("_")){
-            haveWinner = true;
+        for (int i = 0; i<8; i++){
+            int fNumb = winVar[i][0];
+            int sNumb = winVar[i][1];
+            int tNumb = winVar[i][2];
+
+            if (checkWinnerComb(fNumb, sNumb, tNumb, figureList)){
+                haveWinner = true;
+                break;
+            }
         }
 
         return haveWinner;
+    }
+
+    //  метод проверки комбинации
+    private boolean checkWinnerComb(int fCell, int sCell, int tCell, ArrayList<String> figureList){
+
+        boolean haveWinnerHelp = false;
+
+        if (figureList.get(fCell).equals(figureList.get(sCell)) && figureList.get(sCell).equals(figureList.get(tCell)) && !figureList.get(fCell).equals("_")){
+            haveWinnerHelp = true;
+        }
+
+        return haveWinnerHelp;
+    }
+
+    //  метод создания массива очередности ходов игроков
+    private int[] playersMoveTurnBuilder(){
+        int[] playersMovesTurn = new int[FULL_BOARD_SIZE];
+        int playerMoveStep = 1;
+
+        for (int i = 0; i < FULL_BOARD_SIZE; i++){
+
+            if (playerMoveStep ==0){
+                playerMoveStep = 1;
+            }
+            else {
+                playerMoveStep = 0;
+            }
+            playersMovesTurn[i]=playerMoveStep;
+        }
+
+        return playersMovesTurn;
+    }
+
+    private static void clearConsole() {
+
+    }
+
+    public ArrayList<Player> getPlayersList() {
+        return playersList;
+    }
+
+    public Board getPlayBoard() {
+        return playBoard;
     }
 }

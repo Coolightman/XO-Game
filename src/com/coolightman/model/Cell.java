@@ -2,20 +2,14 @@ package com.coolightman.model;
 
 public class Cell {
     private String cellFigure;
-    private String cellXYName;
+    private String cellXYCords;
 
-    public Cell(){
+    Cell(){
         cellFigure = "_";
-        drawCell();
     }
 
     public void setFigure(String figure) {
-        if (figure.equals("cross")){
-            cellFigure = "X";
-        }
-        else if (figure.equals("zero")){
-            cellFigure = "O";
-        }
+        this.cellFigure = figure;
     }
 
     public String getFigure() {
@@ -23,15 +17,14 @@ public class Cell {
     }
 
     public String getCellXYName() {
-        return cellXYName;
+        return cellXYCords;
     }
 
-    public void setCellXYName(String cellXYName) {
-        this.cellXYName = cellXYName;
+    void setCellXYName(String cellXYName) {
+        this.cellXYCords = cellXYName;
     }
 
-    public void drawCell(){
+    void printCell(){
         System.out.print("|"+cellFigure+"|");
     }
 }
-

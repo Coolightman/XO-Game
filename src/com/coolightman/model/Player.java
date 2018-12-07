@@ -1,30 +1,21 @@
 package com.coolightman.model;
 
-import java.util.Scanner;
-
 public class Player {
     private String namePlayer;
     private String figurePlayer;
-    private static int numberPlayer=0;
+    private static int NUMBER_OF_PLAYER=0;
 
     public Player() {
-        numberPlayer++;
-        System.out.println("Choose Player "+numberPlayer+" Name:");
-        Scanner scanner = new Scanner(System.in);
-        this.namePlayer = scanner.next();
+        NUMBER_OF_PLAYER++;//
+        namePlayer = "Player_"+NUMBER_OF_PLAYER;
+    }
+
+    public void setNamePlayer(String namePlayer) {
+        this.namePlayer = namePlayer;
     }
 
     public void setPlayerFigure(String figure){
         this.figurePlayer = figure;
-        String charFigure;
-        if (figure.equals("cross")){
-            charFigure = "<X>";
-        }
-        else if(figure.equals("zero")){
-            charFigure = "<O>";
-        }
-        else charFigure = null;
-        System.out.println("Player "+namePlayer+" gets figure "+charFigure);
     }
 
     public String getNamePlayer() {

@@ -1,11 +1,10 @@
 package com.coolightman.main;
 
-import com.coolightman.engine.Game;
+import com.coolightman.menu.ConsoleMenu;
 
 public class GameLauncher {
 
     public static void main(String[] args) {
-        Game game = new Game();
-        game.StartGame();
+        ConsoleMenu.startConsoleMenu();
     }
 }
