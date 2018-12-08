@@ -17,11 +17,11 @@ public class Game {
 //      создание игроков
         Player player1 = new Player();
         playersList.add(player1);
-        player1.setPlayerFigure("X");
+        player1.setPlayerFigure(Figure.X);
 
         Player player2 = new Player();
         playersList.add(player2);
-        player2.setPlayerFigure("O");
+        player2.setPlayerFigure(Figure.O);
     }
 
     //  основной игровой метод
@@ -138,7 +138,7 @@ public class Game {
     private boolean checkingCellEmpty(int cellNumb){
         boolean cellIsEmpty;
 
-        if (playBoard.getCellList().get(cellNumb).getFigure().equals("_")){
+        if (playBoard.getCellList().get(cellNumb).getFigure()==Figure.N){
             cellIsEmpty = true;
         }
         else {
@@ -156,7 +156,7 @@ public class Game {
 //      выйгрышные комбинации
         int winVar[][]= {{0,1,2}, {0,3,6}, {0,4,8}, {1,4,7}, {2,4,6}, {2,5,8}, {3,4,5}, {6,7,8}};
 
-        ArrayList<String> figureList = new ArrayList<>();
+        ArrayList<Figure> figureList = new ArrayList<>();
 
 //      создание списка текущих фигур
         for (int i=0; i<FULL_BOARD_SIZE; i++){
@@ -178,11 +178,11 @@ public class Game {
     }
 
     //  метод проверки комбинации
-    private boolean checkWinnerComb(int fCell, int sCell, int tCell, ArrayList<String> figureList){
+    private boolean checkWinnerComb(int fCell, int sCell, int tCell, ArrayList<Figure> figureList){
 
         boolean haveWinnerHelp = false;
 
-        if (figureList.get(fCell).equals(figureList.get(sCell)) && figureList.get(sCell).equals(figureList.get(tCell)) && !figureList.get(fCell).equals("_")){
+        if (figureList.get(fCell)==(figureList.get(sCell)) && figureList.get(sCell)==(figureList.get(tCell)) && figureList.get(fCell)!=Figure.N){
             haveWinnerHelp = true;
         }
 

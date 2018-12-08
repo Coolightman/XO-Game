@@ -1,6 +1,7 @@
 package com.coolightman.menu;
 
 import com.coolightman.engine.Game;
+import com.coolightman.model.Figure;
 
 import java.util.Scanner;
 
@@ -24,7 +25,7 @@ public class ConsoleMenu {
     }
 
     private static void printConsoleMenu(){
-        System.out.println(
+        System.out.print(
                 "MENU:\n" +
                         "1-Start\n" +
                         "2-Set players names\n" +
@@ -60,7 +61,7 @@ public class ConsoleMenu {
                 break;
 
             default:
-                System.out.println(
+                System.out.print(
                         "Choose another menu item!\n" +
                                 ">");
         }
@@ -91,7 +92,7 @@ public class ConsoleMenu {
     }
 
     private static boolean repeatGame(Game game){
-        System.out.println(
+        System.out.print(
                 "Do you wan't repeat XO Game?\n" +
                         "1-Yes\n" +
                         "2-No. Exit.\n" +
@@ -105,7 +106,7 @@ public class ConsoleMenu {
             case "1":
 //               обнуляем все ячейки в поле
                 for (int i=0; i<9; i++){
-                    game.getPlayBoard().getCellList().get(i).setFigure("_");
+                    game.getPlayBoard().getCellList().get(i).setFigure(Figure.N);
                 }
                 break;
 
@@ -115,7 +116,7 @@ public class ConsoleMenu {
                 break;
 
             default:
-                System.out.println(
+                System.out.print(
                         "Choose another menu item!\n" +
                                 ">");
         }
