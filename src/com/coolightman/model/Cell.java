@@ -2,7 +2,7 @@ package com.coolightman.model;
 
 public class Cell {
     private Figure cellFigure;
-    private String cellXYCords;
+    private String cellCords;
 
     Cell(){
         cellFigure = Figure.N;
@@ -16,12 +16,12 @@ public class Cell {
         return cellFigure;
     }
 
-    public String getCellXYName() {
-        return cellXYCords;
+    public String getCellName() {
+        return cellCords;
     }
 
-    void setCellXYName(String cellXYName) {
-        this.cellXYCords = cellXYName;
+    void setCellName(String cellName) {
+        this.cellCords = cellName;
     }
 
     void printCell(){

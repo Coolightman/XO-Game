@@ -12,14 +12,11 @@ public class Board {
 
     private void createBoard(){
 
-        for (int i=0; i<BOARD_SIZE;i++){
-
-            for (int j =0;j<BOARD_SIZE;j++){
+        for (int i=0; i<BOARD_SIZE*BOARD_SIZE;i++){
 
                 Cell cell = new Cell();
-                cell.setCellXYName(""+i+j);
+                cell.setCellName(""+i);
                 cellList.add(cell);
-            }
         }
     }
 
@@ -33,16 +30,15 @@ public class Board {
                 cellList.get(cellListNumber).printCell();
                 cellListNumber++;
             }
-            System.out.print("\t|"+i+"0|"+i+"1|"+i+"2|\n");
-//            System.out.println();
+            System.out.println();
         }
     }
 
     public void printBoardExample(){
         System.out.println(
-                "|00|01|02|\n" +
-                        "|10|11|12|\n" +
-                        "|20|21|22|");
+                 "|0|1|2|\n" +
+                 "|3|4|5|\n" +
+                 "|6|7|8|");
     }
 
     public ArrayList<Cell> getCellList() {

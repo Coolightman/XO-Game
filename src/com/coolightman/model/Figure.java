@@ -5,7 +5,6 @@ public enum Figure {
     O("O"),
     N("N");
 
-
     Figure(String figure) {
 
     }

@@ -31,9 +31,7 @@ public class Game {
         int[] playersMoveTurn = playersMoveTurnBuilder();
 
         System.out.println(
-                "Choose your move by \"XY\" format\n" +
-                        "where X - number of line from [0:2]\n" +
-                        "where Y - number of column from [0:2]");
+                "Choose your move by this format:" );
         playBoard.printBoardExample();
         System.out.println();
         System.out.println("****Game START**** ");
@@ -51,8 +49,6 @@ public class Game {
 
                 getMoveAndChangeCellFigure(playingPlayer);
                 moveCounter++;
-
-                clearConsole();
 
                 playBoard.printBoard();
                 System.out.println();
@@ -77,10 +73,10 @@ public class Game {
     //  методы игрового цикла
 //  метод получения хода игрока из командной строки
     private String getPlayerMove(){
-        String moveXY;
+        String move;
         Scanner scanner = new Scanner(System.in);
-        moveXY = scanner.next();
-        return moveXY;
+        move = scanner.next();
+        return move;
     }
 
     //  метод получения и обработки хода игрока, его проверка и вставка в соотв ячейку фигуры игрока
@@ -89,11 +85,11 @@ public class Game {
 //      цикл требует от игрока хода пока не будет успешно заменена фигура в какой-либо ячейке
         boolean figureInCellChangedSuccess = false;
         do {
-            String playerXYMove = getPlayerMove();
+            String playerMove = getPlayerMove();
 
-            if (checkCellExist(playerXYMove)){
+            if (checkCellExist(playerMove)){
 
-                int cellNumb = findCellByXYCords(playerXYMove);
+                int cellNumb = findCellByCords(playerMove);
 
                 if (checkingCellEmpty(cellNumb)){
 
@@ -106,11 +102,11 @@ public class Game {
     }
 
     //  метод проверки на наличие по таким координатам ячейки на поле
-    private boolean checkCellExist(String moveXY){
+    private boolean checkCellExist(String move){
         boolean cellExist;
 
-        if (moveXY.equals("00")||moveXY.equals("10")||moveXY.equals("20")||moveXY.equals("01")||moveXY.equals("11")
-                ||moveXY.equals("21")||moveXY.equals("02")||moveXY.equals("12")||moveXY.equals("22")){
+        if (move.equals("0")||move.equals("1")||move.equals("2")||move.equals("3")||move.equals("4")
+                ||move.equals("5")||move.equals("6")||move.equals("7")||move.equals("8")){
             cellExist=true;
         }
         else {
@@ -122,11 +118,11 @@ public class Game {
     }
 
     //  метод поиска ячейки соотв-ей ходу игрока
-    private int findCellByXYCords(String moveXY){
+    private int findCellByCords(String move){
         int cellNumb=0;
 
         for (int i = 0; i<9 ; i++){
-            if (playBoard.getCellList().get(i).getCellXYName().equals(moveXY)) {
+            if (playBoard.getCellList().get(i).getCellName().equals(move)) {
                 cellNumb=i;
             }
         }
@@ -206,10 +202,6 @@ public class Game {
         }
 
         return playersMovesTurn;
-    }
-
-    private static void clearConsole() {
-
     }
 
     public ArrayList<Player> getPlayersList() {
