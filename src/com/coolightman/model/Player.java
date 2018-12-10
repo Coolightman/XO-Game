@@ -5,9 +5,10 @@ public class Player {
     private Figure figurePlayer;
     private static int NUMBER_OF_PLAYER=0;
 
-    public Player() {
+    Player(PlayerBuilder playerBuilder) {
         NUMBER_OF_PLAYER++;//
-        namePlayer = "Player_"+NUMBER_OF_PLAYER;
+        this.namePlayer = playerBuilder.getName();
+        this.figurePlayer = playerBuilder.getFigure();
     }
 
     public void setNamePlayer(String namePlayer) {

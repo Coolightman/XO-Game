@@ -15,11 +15,14 @@ public class Game {
 
     public Game(){
 //      создание игроков
-        Player player1 = new Player();
+        Player player1 = new PlayerBuilder()
+                .buildFigure(Figure.X)
+                .build();
         playersList.add(player1);
-        player1.setPlayerFigure(Figure.X);
 
-        Player player2 = new Player();
+        Player player2 = new PlayerBuilder()
+                .buildFigure(Figure.O)
+                .build();
         playersList.add(player2);
         player2.setPlayerFigure(Figure.O);
     }
