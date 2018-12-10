@@ -12,8 +12,8 @@ public class ConsoleMenu {
 
         System.out.println(
                 "*********\n" +
-                        " XO Game\n" +
-                        "*********\n" );
+                " XO Game\n" +
+                "*********\n" );
 
         boolean menuWorkWasDid;
 

@@ -1,11 +1,11 @@
 package com.coolightman.model;
 
 public enum Figure {
-    X("X"),
-    O("O"),
-    N("N");
+    X(),
+    O(),
+    N();
 
-    Figure(String figure) {
+    Figure() {
 
     }
 }
