@@ -17,14 +17,15 @@ public class Game {
 //      создание игроков
         Player player1 = new PlayerBuilder()
                 .buildFigure(Figure.X)
+                .buildName("Player_1")
                 .build();
         playersList.add(player1);
 
         Player player2 = new PlayerBuilder()
                 .buildFigure(Figure.O)
+                .buildName("Player_2")
                 .build();
         playersList.add(player2);
-        player2.setPlayerFigure(Figure.O);
     }
 
     //  основной игровой метод

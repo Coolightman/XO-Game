@@ -23,7 +23,6 @@ public class PlayerBuilder {
     }
 
     public Player build(){
-        this.name = "Default";
         return new Player(this);
     }
 }
