@@ -9,12 +9,10 @@ public class Game {
     private int BOARD_SIZE=3;
     private int FULL_BOARD_SIZE = BOARD_SIZE*BOARD_SIZE;
     private ArrayList<Player> playersList = new ArrayList<>();
-//      создание поля
 
     private Board playBoard = new Board();
 
     public Game(){
-//      создание игроков
         Player player1 = new PlayerBuilder()
                 .buildFigure(Figure.X)
                 .buildName("Player_1")
@@ -28,7 +26,6 @@ public class Game {
         playersList.add(player2);
     }
 
-    //  основной игровой метод
     public void StartGame(){
 
 //      задаем очередность ходов игроков

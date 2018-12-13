@@ -3,7 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="be5d5ea5-b366-449b-b213-70eaf715a5a5" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/XOGame/com/coolightman/model/Player.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/XOGame/com/coolightman/model/Player.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/XOGame/com/coolightman/engine/Game.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/XOGame/com/coolightman/engine/Game.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/coolightman/engine/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/coolightman/engine/Game.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -33,12 +34,13 @@
           <entry key="project.closed" value="8" />
           <entry key="project.open.time.31" value="1" />
           <entry key="project.open.time.33" value="1" />
+          <entry key="project.open.time.34" value="1" />
           <entry key="project.open.time.37" value="1" />
           <entry key="project.open.time.4" value="1" />
           <entry key="project.open.time.7" value="1" />
           <entry key="project.open.time.8" value="2" />
           <entry key="project.open.time.9" value="1" />
-          <entry key="project.opened" value="8" />
+          <entry key="project.opened" value="9" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
@@ -59,7 +61,7 @@
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="815" />
+          <entry key="JAVA" value="821" />
           <entry key="PLAIN_TEXT" value="16" />
         </counts>
       </usages-collector>
@@ -79,8 +81,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/com/coolightman/engine/Game.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-986">
-              <caret line="20" column="25" lean-forward="true" selection-start-line="20" selection-start-column="25" selection-end-line="20" selection-end-column="25" />
+            <state>
+              <caret line="36" column="29" selection-start-line="36" selection-start-column="29" selection-end-line="36" selection-end-column="29" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -117,10 +119,10 @@
         <option value="$PROJECT_DIR$/src/com/coolightman/model/Board.java" />
         <option value="$PROJECT_DIR$/src/com/coolightman/main/GameLauncher.java" />
         <option value="$PROJECT_DIR$/src/com/coolightman/model/PlayerBuilder.java" />
-        <option value="$PROJECT_DIR$/src/com/coolightman/engine/Game.java" />
         <option value="$PROJECT_DIR$/src/com/coolightman/menu/ConsoleMenu.java" />
         <option value="$PROJECT_DIR$/src/com/coolightman/model/Player.java" />
         <option value="$PROJECT_DIR$/src/com/coolightman/model/Figure.java" />
+        <option value="$PROJECT_DIR$/src/com/coolightman/engine/Game.java" />
       </list>
     </option>
   </component>
@@ -137,7 +139,7 @@
     </treeState>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="162" />
+    <option name="x" value="72" />
     <option name="width" value="1611" />
     <option name="height" value="1047" />
   </component>
@@ -147,7 +149,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -199,6 +200,7 @@
         </subPane>
       </pane>
       <pane id="Scope" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -255,6 +257,7 @@
       <workItem from="1544257037683" duration="2017000" />
       <workItem from="1544272841438" duration="3370000" />
       <workItem from="1544461196178" duration="2779000" />
+      <workItem from="1544724582917" duration="1409000" />
     </task>
     <task id="LOCAL-00001" summary="Version1.0">
       <created>1543431501487</created>
@@ -337,7 +340,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="14720000" />
+    <option name="totallyTimeSpent" value="16129000" />
   </component>
   <component name="TodoView" selected-index="4">
     <todo-panel id="selected-file">
@@ -349,10 +352,10 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="162" y="0" width="1611" height="1047" extended-state="0" />
+    <frame x="72" y="0" width="1611" height="1047" extended-state="0" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.4928806" visible="true" weight="0.17150226" />
-      <window_info id="Structure" order="1" sideWeight="0.50711936" side_tool="true" visible="true" weight="0.17150226" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49183005" visible="true" weight="0.1734365" />
+      <window_info id="Structure" order="1" sideWeight="0.50816995" side_tool="true" visible="true" weight="0.1734365" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
       <window_info id="UI Designer" order="4" />
@@ -367,7 +370,7 @@
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32968238" />
       <window_info anchor="bottom" id="Version Control" order="7" weight="0.32968238" />
       <window_info anchor="bottom" id="Database Changes" order="8" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Terminal" order="9" sideWeight="0.49915397" weight="0.32968238" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="9" sideWeight="0.49915397" visible="true" weight="0.32968238" />
       <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.500846" side_tool="true" weight="0.6002191" />
       <window_info anchor="bottom" id="Messages" order="11" weight="0.32968238" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -476,8 +479,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/coolightman/engine/Game.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-986">
-          <caret line="20" column="25" lean-forward="true" selection-start-line="20" selection-start-column="25" selection-end-line="20" selection-end-column="25" />
+        <state>
+          <caret line="36" column="29" selection-start-line="36" selection-start-column="29" selection-end-line="36" selection-end-column="29" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
