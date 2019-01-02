@@ -1,8 +1,6 @@
 package com.coolightman.menu;
 
 import com.coolightman.engine.Game;
-import com.coolightman.model.Figure;
-
 import java.util.Scanner;
 
 public class ConsoleMenu {
@@ -106,7 +104,7 @@ public class ConsoleMenu {
             case "1":
 //               обнуляем все ячейки в поле
                 for (int i=0; i<9; i++){
-                    game.getPlayBoard().getCellList().get(i).setFigure(Figure.N);
+                    game.getPlayBoard().getCellList().get(i).setFigure("_");
                 }
                 break;
 

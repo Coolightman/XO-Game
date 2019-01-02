@@ -14,13 +14,13 @@ public class Game {
 
     public Game(){
         Player player1 = new PlayerBuilder()
-                .buildFigure(Figure.X)
+                .buildFigure("X")
                 .buildName("Player_1")
                 .build();
         playersList.add(player1);
 
         Player player2 = new PlayerBuilder()
-                .buildFigure(Figure.O)
+                .buildFigure("O")
                 .buildName("Player_2")
                 .build();
         playersList.add(player2);
@@ -135,7 +135,7 @@ public class Game {
     private boolean checkingCellEmpty(int cellNumb){
         boolean cellIsEmpty;
 
-        if (playBoard.getCellList().get(cellNumb).getFigure()==Figure.N){
+        if (playBoard.getCellList().get(cellNumb).getFigure().equals("_")){
             cellIsEmpty = true;
         }
         else {
@@ -151,9 +151,9 @@ public class Game {
         boolean haveWinner = false;
 
 //      выйгрышные комбинации
-        int winVar[][]= {{0,1,2}, {0,3,6}, {0,4,8}, {1,4,7}, {2,4,6}, {2,5,8}, {3,4,5}, {6,7,8}};
+        int[][] winVar = {{0, 1, 2}, {0, 3, 6}, {0, 4, 8}, {1, 4, 7}, {2, 4, 6}, {2, 5, 8}, {3, 4, 5}, {6, 7, 8}};
 
-        ArrayList<Figure> figureList = new ArrayList<>();
+        ArrayList<String> figureList = new ArrayList<>();
 
 //      создание списка текущих фигур
         for (int i=0; i<FULL_BOARD_SIZE; i++){
@@ -175,11 +175,11 @@ public class Game {
     }
 
     //  метод проверки комбинации
-    private boolean checkWinnerComb(int fCell, int sCell, int tCell, ArrayList<Figure> figureList){
+    private boolean checkWinnerComb(int fCell, int sCell, int tCell, ArrayList<String> figureList){
 
         boolean haveWinnerHelp = false;
 
-        if (figureList.get(fCell)==(figureList.get(sCell)) && figureList.get(sCell)==(figureList.get(tCell)) && figureList.get(fCell)!=Figure.N){
+        if (figureList.get(fCell).equals(figureList.get(sCell)) && figureList.get(sCell).equals(figureList.get(tCell)) && !figureList.get(fCell).equals("_")){
             haveWinnerHelp = true;
         }
 

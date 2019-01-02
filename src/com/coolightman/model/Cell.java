@@ -1,18 +1,18 @@
 package com.coolightman.model;
 
 public class Cell {
-    private Figure cellFigure;
+    private String cellFigure;
     private String cellCords;
 
     Cell(){
-        cellFigure = Figure.N;
+        cellFigure = "_";
     }
 
-    public void setFigure(Figure figure) {
+    public void setFigure(String figure) {
         this.cellFigure = figure;
     }
 
-    public Figure getFigure() {
+    public String getFigure() {
         return cellFigure;
     }
 
