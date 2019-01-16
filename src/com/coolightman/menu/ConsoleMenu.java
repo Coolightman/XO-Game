@@ -1,6 +1,7 @@
 package com.coolightman.menu;
 
-import com.coolightman.engine.Game;
+import com.coolightman.engine.GameEngine;
+import com.coolightman.model.Board;
 import com.coolightman.model.Figure;
 
 import java.util.Scanner;
@@ -8,51 +9,39 @@ import java.util.Scanner;
 public class ConsoleMenu {
 
     public static void startConsoleMenu() {
-        Game game = new Game();
+        System.out.println("XO Game");
+        printMenu();
+    }
 
-        System.out.println(
-                "*********\n" +
-                        " XO Game\n" +
-                        "*********\n");
-
-        boolean menuWorkWasDid;
-
+    private static void printMenu(){
+        boolean gameWasFinished;
         do {
-            printConsoleMenu();
-            menuWorkWasDid = showConsoleMenu(game);
+            gameWasFinished=checkGameEnd();
         }
-        while (!menuWorkWasDid);
+        while (!gameWasFinished);
     }
 
-    private static void printConsoleMenu() {
-        System.out.print(
-                "MENU:\n" +
-                        "1-Start\n" +
-                        "2-Set players names\n" +
-                        "3-Exit\n" +
-                        ">");
-    }
-
-    private static boolean showConsoleMenu(Game game) {
+    private static boolean checkGameEnd() {
         boolean menuWorkWasDid = false;
 
+        printConsoleMenu();
         String menuChoice = getMenuChoice();
 
         switch (menuChoice) {
             case "1":
                 boolean wannaRepeat;
 
-                do {
-                    game.StartGame();
-                    wannaRepeat = repeatGame(game);
-                }
-                while (wannaRepeat);
+//                do {
+                    GameEngine.start();
+//                    wannaRepeat = repeatGame(game);
+//                }
+//                while (wannaRepeat);
 
                 menuWorkWasDid = true;
                 break;
 
             case "2":
-                setPlayersNames(game);
+//                setPlayersNames(game);
                 break;
 
             case "3":
@@ -68,6 +57,15 @@ public class ConsoleMenu {
         return menuWorkWasDid;
     }
 
+    private static void printConsoleMenu() {
+        System.out.print(
+                "MENU:\n" +
+                        "1-Start\n" +
+                        "2-Set players names\n" +
+                        "3-Exit\n" +
+                        ">");
+    }
+
     private static String getMenuChoice() {
         String menuChoice;
 
@@ -77,21 +75,21 @@ public class ConsoleMenu {
         return menuChoice;
     }
 
-    private static void setPlayersNames(Game game) {
-        Scanner scanner = new Scanner(System.in);
+//    private static void setPlayersNames() {
+//        Scanner scanner = new Scanner(System.in);
+//
+//        System.out.println("Choose Player 1 name:");
+//
+//        String namePlayer1 = scanner.next();
+//        pl.getPlayersList().get(0).setNamePlayer(namePlayer1);
+//
+//        System.out.println("Choose Player 2 name:");
+//
+//        String namePlayer2 = scanner.next();
+//        game.getPlayersList().get(1).setNamePlayer(namePlayer2);
+//    }
 
-        System.out.println("Choose Player 1 name:");
-
-        String namePlayer1 = scanner.next();
-        game.getPlayersList().get(0).setNamePlayer(namePlayer1);
-
-        System.out.println("Choose Player 2 name:");
-
-        String namePlayer2 = scanner.next();
-        game.getPlayersList().get(1).setNamePlayer(namePlayer2);
-    }
-
-    private static boolean repeatGame(Game game) {
+    private static boolean repeatGame() {
         System.out.print(
                 "Do you wan't repeat XO Game?\n" +
                         "1-Yes\n" +
@@ -106,7 +104,7 @@ public class ConsoleMenu {
             case "1":
 //               обнуляем все ячейки в поле
                 for (int i = 0; i < 9; i++) {
-                    game.getPlayBoard().getCellList().get(i).setFigure(Figure.EMPTY);
+                    Board.getCellList().get(i).setFigure(Figure.EMPTY);
                 }
                 break;
 

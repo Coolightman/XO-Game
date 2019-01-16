@@ -1,36 +1,24 @@
 package com.coolightman.engine;
 
-import com.coolightman.model.*;
+import com.coolightman.model.Board;
+import com.coolightman.model.Figure;
+import com.coolightman.model.Player;
 
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class Game {
-    private int BOARD_SIZE = 3;
-    private int FULL_BOARD_SIZE = BOARD_SIZE * BOARD_SIZE;
-    private ArrayList<Player> playersList = new ArrayList<>();
+public class GameEngine {
+    private static Player[] players = new Player[2];
+    private static int FULL_BOARD_SIZE = Board.getFullBoardSize();
 
-    private Board playBoard = new Board();
-
-    public Game() {
-        Player player1 = new Player("Player_1", Figure.X);
-        playersList.add(player1);
-
-        Player player2 = new Player("Player_2", Figure.O);
-
-        playersList.add(player2);
+    public static void start(){
+        createModels();
+        gameProcess();
     }
 
-    public void StartGame() {
-
-//      задаем очередность ходов игроков
-        int[] playersMoveTurn = playersMoveTurnBuilder();
-
-        System.out.println(
-                "Choose your move by this format:");
-        playBoard.printBoardExample();
-        System.out.println();
-        System.out.println("****Game START**** ");
+    private static void gameProcess() {
+        Figure[] turnXOfigure = {Figure.X, Figure.O, Figure.X, Figure.O, Figure.X, Figure.O, Figure.X, Figure.O, Figure.X};
+        Board.printBoardExample();
 
 //      основной игровой цикл
 //      цикл работает пока не появится победитель или не будет ничья
@@ -40,22 +28,21 @@ public class Game {
             int moveCounter = 0;
 
 //          цикл перебора очередности ходов игроков
-            for (int playingPlayer : playersMoveTurn) {
-                System.out.println(playersList.get(playingPlayer).getNamePlayer() + " do your move:");
+            for (Figure figureOfPlayer : turnXOfigure) {
+                printCurrentPlayerText(figureOfPlayer);
 
-                getMoveAndChangeCellFigure(playingPlayer);
+                getMoveAndChangeCellFigure(figureOfPlayer);
                 moveCounter++;
 
-                playBoard.printBoard();
+                Board.printBoard();
                 System.out.println();
 
-                if (checkWinner()) {
+                if (moveCounter>4 & checkWinner()) {
                     haveWinner = true;
-                    System.out.println("Congratulation! " + playersList.get(playingPlayer).getNamePlayer() + " is WIN!");
+                    System.out.println("Congratulation! ... is WIN!");
                     break;
                 }
             }
-
 //          проверяем на ничью
             if (moveCounter == 9 && !haveWinner) {
                 System.out.println("We have not winner =(");
@@ -66,17 +53,23 @@ public class Game {
         System.out.println("Game End\n");
     }
 
-    //  методы игрового цикла
-//  метод получения хода игрока из командной строки
-    private String getPlayerMove() {
-        String move;
-        Scanner scanner = new Scanner(System.in);
-        move = scanner.next();
-        return move;
+    private static void printCurrentPlayerText(Figure figure) {
+        if (figure.equals(Figure.X)){
+            System.out.println(players[0].getNamePlayer() + " do your move:");
+        }
+        if (figure.equals(Figure.O)){
+            System.out.println(players[1].getNamePlayer() + " do your move:");
+        }
+    }
+
+    private static void createModels() {
+        players[0] = new Player("Player_1", Figure.X);
+        players[1] = new Player("Player_2", Figure.O);
+        Board.createBoard();
     }
 
     //  метод получения и обработки хода игрока, его проверка и вставка в соотв ячейку фигуры игрока
-    private void getMoveAndChangeCellFigure(int playerNumb) {
+    private static void getMoveAndChangeCellFigure(Figure playerFigure) {
 
 //      цикл требует от игрока хода пока не будет успешно заменена фигура в какой-либо ячейке
         boolean figureInCellChangedSuccess = false;
@@ -90,15 +83,22 @@ public class Game {
                 if (checkingCellEmpty(cellNumb)) {
 
 //                  запись фигуры играющего игрока в соотв-ую ячейку
-                    playBoard.getCellList().get(cellNumb).setFigure(playersList.get(playerNumb).getFigurePlayer());
+                    Board.getCellList().get(cellNumb).setFigure(playerFigure);
                     figureInCellChangedSuccess = true;
                 }
             }
         } while (!figureInCellChangedSuccess);
     }
 
+    private static String getPlayerMove(){
+        String move;
+        Scanner scanner = new Scanner(System.in);
+        move = scanner.next();
+        return move;
+    }
+
     //  метод проверки на наличие по таким координатам ячейки на поле
-    private boolean checkCellExist(String move) {
+    private static boolean checkCellExist(String move) {
         boolean cellExist;
 
         if (move.equals("0") || move.equals("1") || move.equals("2") || move.equals("3") || move.equals("4")
@@ -113,11 +113,11 @@ public class Game {
     }
 
     //  метод поиска ячейки соотв-ей ходу игрока
-    private int findCellByCords(String move) {
+    private static int findCellByCords(String move) {
         int cellNumb = 0;
 
         for (int i = 0; i < 9; i++) {
-            String cellNumber = Integer.toString(playBoard.getCellList().get(i).getCellName());
+            String cellNumber = Integer.toString(Board.getCellList().get(i).getCellName());
             if (cellNumber.equals(move)){
                 cellNumb = i;
             }
@@ -127,10 +127,10 @@ public class Game {
     }
 
     //  метод проверка "занятости" ячейки
-    private boolean checkingCellEmpty(int cellNumb) {
+    private static boolean checkingCellEmpty(int cellNumb) {
         boolean cellIsEmpty;
 
-        if (playBoard.getCellList().get(cellNumb).getFigure().equals(Figure.EMPTY)) {
+        if (Board.getCellList().get(cellNumb).getFigure().equals(Figure.EMPTY)) {
             cellIsEmpty = true;
         } else {
             System.out.println("Cell is busy, try again:");
@@ -141,7 +141,7 @@ public class Game {
     }
 
     //  метод проверки наличия победителя
-    private boolean checkWinner() {
+    private static boolean checkWinner() {
         boolean haveWinner = false;
 
 //      выйгрышные комбинации
@@ -151,7 +151,7 @@ public class Game {
 
 //      создание списка текущих фигур
         for (int i = 0; i < FULL_BOARD_SIZE; i++) {
-            figureList.add(playBoard.getCellList().get(i).getFigure());
+            figureList.add(Board.getCellList().get(i).getFigure());
         }
 
         for (int i = 0; i < 8; i++) {
@@ -169,11 +169,13 @@ public class Game {
     }
 
     //  метод проверки комбинации
-    private boolean checkWinnerComb(int fCell, int sCell, int tCell, ArrayList<Figure> figureList) {
+    private static boolean checkWinnerComb(int fCell, int sCell, int tCell, ArrayList<Figure> figureList) {
 
         boolean haveWinnerHelp = false;
 
-        if (figureList.get(fCell).equals(figureList.get(sCell)) && figureList.get(sCell).equals(figureList.get(tCell)) && !figureList.get(fCell).equals(Figure.EMPTY)) {
+        if (figureList.get(fCell).equals(figureList.get(sCell))
+                && figureList.get(sCell).equals(figureList.get(tCell))
+                && !figureList.get(fCell).equals(Figure.EMPTY)) {
             haveWinnerHelp = true;
         }
 
@@ -181,7 +183,7 @@ public class Game {
     }
 
     //  метод создания массива очередности ходов игроков
-    private int[] playersMoveTurnBuilder() {
+    private static int[] playersMoveTurnBuilder() {
         int[] playersMovesTurn = new int[FULL_BOARD_SIZE];
         int playerMoveStep = 1;
 
@@ -196,13 +198,5 @@ public class Game {
         }
 
         return playersMovesTurn;
-    }
-
-    public ArrayList<Player> getPlayersList() {
-        return playersList;
-    }
-
-    public Board getPlayBoard() {
-        return playBoard;
     }
 }
