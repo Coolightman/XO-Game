@@ -1,30 +1,27 @@
 package com.coolightman.model;
 
 public class Cell {
-    private String cellFigure;
-    private String cellCords;
+    private Figure cellFigure;
+    private final int cellNumber;
 
-    Cell(){
-        cellFigure = "_";
+    Cell(int cellNumber) {
+        cellFigure = Figure.EMPTY;
+        this.cellNumber = cellNumber;
     }
 
-    public void setFigure(String figure) {
+    public void setFigure(Figure figure) {
         this.cellFigure = figure;
     }
 
-    public String getFigure() {
+    public Figure getFigure() {
         return cellFigure;
     }
 
-    public String getCellName() {
-        return cellCords;
+    public int getCellName() {
+        return cellNumber;
     }
 
-    void setCellName(String cellName) {
-        this.cellCords = cellName;
-    }
-
-    void printCell(){
-        System.out.print("|"+cellFigure+"|");
+    void printCell() {
+        System.out.print("|" + cellFigure + "|");
     }
 }

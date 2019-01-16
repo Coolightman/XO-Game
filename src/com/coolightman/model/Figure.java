@@ -1,6 +1,6 @@
 package com.coolightman.model;
 
-public enum Figure{
+public enum Figure {
     X {
         public String toString() {
             return "X";

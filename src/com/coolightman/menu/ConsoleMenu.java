@@ -1,17 +1,19 @@
 package com.coolightman.menu;
 
 import com.coolightman.engine.Game;
+import com.coolightman.model.Figure;
+
 import java.util.Scanner;
 
 public class ConsoleMenu {
 
-    public static void startConsoleMenu(){
+    public static void startConsoleMenu() {
         Game game = new Game();
 
         System.out.println(
                 "*********\n" +
-                " XO Game\n" +
-                "*********\n" );
+                        " XO Game\n" +
+                        "*********\n");
 
         boolean menuWorkWasDid;
 
@@ -22,7 +24,7 @@ public class ConsoleMenu {
         while (!menuWorkWasDid);
     }
 
-    private static void printConsoleMenu(){
+    private static void printConsoleMenu() {
         System.out.print(
                 "MENU:\n" +
                         "1-Start\n" +
@@ -40,11 +42,11 @@ public class ConsoleMenu {
             case "1":
                 boolean wannaRepeat;
 
-                do{
+                do {
                     game.StartGame();
                     wannaRepeat = repeatGame(game);
                 }
-                while(wannaRepeat);
+                while (wannaRepeat);
 
                 menuWorkWasDid = true;
                 break;
@@ -75,7 +77,7 @@ public class ConsoleMenu {
         return menuChoice;
     }
 
-    private static void setPlayersNames(Game game){
+    private static void setPlayersNames(Game game) {
         Scanner scanner = new Scanner(System.in);
 
         System.out.println("Choose Player 1 name:");
@@ -89,7 +91,7 @@ public class ConsoleMenu {
         game.getPlayersList().get(1).setNamePlayer(namePlayer2);
     }
 
-    private static boolean repeatGame(Game game){
+    private static boolean repeatGame(Game game) {
         System.out.print(
                 "Do you wan't repeat XO Game?\n" +
                         "1-Yes\n" +
@@ -100,11 +102,11 @@ public class ConsoleMenu {
 
         boolean wannaRepeat = true;
 
-        switch (menuChoice){
+        switch (menuChoice) {
             case "1":
 //               обнуляем все ячейки в поле
-                for (int i=0; i<9; i++){
-                    game.getPlayBoard().getCellList().get(i).setFigure("_");
+                for (int i = 0; i < 9; i++) {
+                    game.getPlayBoard().getCellList().get(i).setFigure(Figure.EMPTY);
                 }
                 break;
 

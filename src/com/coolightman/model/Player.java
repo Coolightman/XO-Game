@@ -2,9 +2,9 @@ package com.coolightman.model;
 
 public class Player {
     private String namePlayer;
-    private final String figurePlayer;
+    private final Figure figurePlayer;
 
-    public Player(String namePlayer, String figurePlayer) {
+    public Player(String namePlayer, Figure figurePlayer) {
         this.namePlayer = namePlayer;
         this.figurePlayer = figurePlayer;
     }
@@ -13,7 +13,7 @@ public class Player {
         return namePlayer;
     }
 
-    public String getFigurePlayer() {
+    public Figure getFigurePlayer() {
         return figurePlayer;
     }
 
