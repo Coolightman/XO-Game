@@ -1,5 +1,6 @@
 package com.coolightman.engine;
 
+import com.coolightman.exceptions.XOGameOutOfBoundsException;
 import com.coolightman.model.Board;
 import com.coolightman.model.Figure;
 import com.coolightman.model.Player;
@@ -11,40 +12,45 @@ public class GameEngine {
     private static Player[] players = new Player[2];
     private static int FULL_BOARD_SIZE = Board.getFullBoardSize();
 
-    public static void start(){
+    public static void start() {
         createModels();
-        gameProcess();
+        runGameProcess();
     }
 
-    private static void gameProcess() {
-        Figure[] turnXOfigure = {Figure.X, Figure.O, Figure.X, Figure.O, Figure.X, Figure.O, Figure.X, Figure.O, Figure.X};
+    private static void runGameProcess() {
         Board.printBoardExample();
+        boolean haveWinner;
+        int moveCounter = 0;
+        Figure figureOfPlayer = Figure.O;
 
-//      основной игровой цикл
-//      цикл работает пока не появится победитель или не будет ничья
-        boolean haveWinner = false;
         do {
-//          счетчик "успешных" ходов
-            int moveCounter = 0;
+            figureOfPlayer = receiveFigureFromMove(figureOfPlayer);
+            boolean figureIsAddedOnBoard;
 
-//          цикл перебора очередности ходов игроков
-            for (Figure figureOfPlayer : turnXOfigure) {
-                printCurrentPlayerText(figureOfPlayer);
-
-                getMoveAndChangeCellFigure(figureOfPlayer);
-                moveCounter++;
-
-                Board.printBoard();
-                System.out.println();
-
-                if (moveCounter>4 & checkWinner()) {
-                    haveWinner = true;
-                    System.out.println("Congratulation! ... is WIN!");
-                    break;
+            do {
+                int playerMove = getValidPlayerMove();
+//                TODO exception for busy cell
+                if (checkingCellEmpty(playerMove)) {
+                    Board.getCellList().get(playerMove).setFigure(figureOfPlayer);
+                    figureIsAddedOnBoard = true;
+                } else {
+                    figureIsAddedOnBoard = false;
                 }
+            } while (!figureIsAddedOnBoard);
+
+            Board.printBoard();
+            moveCounter++;
+
+            if (moveCounter > 4 & checkWinner()) {
+                haveWinner = true;
+                System.out.println("Congratulation! ... is WIN!");
+                break;
+            } else {
+                haveWinner = false;
             }
+
 //          проверяем на ничью
-            if (moveCounter == 9 && !haveWinner) {
+            if (!haveWinner & moveCounter == 9) {
                 System.out.println("We have not winner =(");
                 break;
             }
@@ -53,11 +59,37 @@ public class GameEngine {
         System.out.println("Game End\n");
     }
 
+    private static Figure receiveFigureFromMove(Figure figureOfPlayer) {
+        if (figureOfPlayer.equals(Figure.X)) {
+            figureOfPlayer = Figure.O;
+        } else {
+            figureOfPlayer = Figure.X;
+        }
+        printCurrentPlayerText(figureOfPlayer);
+        return figureOfPlayer;
+    }
+
+    private static int getValidPlayerMove() {
+        boolean validPlayerMove;
+        int playerMove = -1;
+        do {
+            try {
+                playerMove = getPlayerMove();
+                validPlayerMove = true;
+            } catch (XOGameOutOfBoundsException e) {
+                System.out.println(e.getMessage());
+                validPlayerMove = false;
+            }
+        } while (!validPlayerMove);
+
+        return playerMove;
+    }
+
     private static void printCurrentPlayerText(Figure figure) {
-        if (figure.equals(Figure.X)){
+        if (figure.equals(Figure.X)) {
             System.out.println(players[0].getNamePlayer() + " do your move:");
         }
-        if (figure.equals(Figure.O)){
+        if (figure.equals(Figure.O)) {
             System.out.println(players[1].getNamePlayer() + " do your move:");
         }
     }
@@ -68,62 +100,28 @@ public class GameEngine {
         Board.createBoard();
     }
 
-    //  метод получения и обработки хода игрока, его проверка и вставка в соотв ячейку фигуры игрока
-    private static void getMoveAndChangeCellFigure(Figure playerFigure) {
+    private static int getPlayerMove() throws XOGameOutOfBoundsException {
+        int playerMove = -1;
+        boolean goodMoveFormat;
 
-//      цикл требует от игрока хода пока не будет успешно заменена фигура в какой-либо ячейке
-        boolean figureInCellChangedSuccess = false;
         do {
-            String playerMove = getPlayerMove();
-
-            if (checkCellExist(playerMove)) {
-
-                int cellNumb = findCellByCords(playerMove);
-
-                if (checkingCellEmpty(cellNumb)) {
-
-//                  запись фигуры играющего игрока в соотв-ую ячейку
-                    Board.getCellList().get(cellNumb).setFigure(playerFigure);
-                    figureInCellChangedSuccess = true;
-                }
+            try {
+                Scanner scanner = new Scanner(System.in);
+                playerMove = scanner.nextInt();
+                goodMoveFormat = true;
+            } catch (Exception e) {
+                System.out.println("Wrong format! Try move again from 0 to 8:");
+                goodMoveFormat = false;
             }
-        } while (!figureInCellChangedSuccess);
-    }
 
-    private static String getPlayerMove(){
-        String move;
-        Scanner scanner = new Scanner(System.in);
-        move = scanner.next();
-        return move;
-    }
+        } while (!goodMoveFormat);
 
-    //  метод проверки на наличие по таким координатам ячейки на поле
-    private static boolean checkCellExist(String move) {
-        boolean cellExist;
-
-        if (move.equals("0") || move.equals("1") || move.equals("2") || move.equals("3") || move.equals("4")
-                || move.equals("5") || move.equals("6") || move.equals("7") || move.equals("8")) {
-            cellExist = true;
-        } else {
-            System.out.println("Wrong coords, try again:");
-            cellExist = false;
+        if (!(playerMove == 0 | playerMove == 1 | playerMove == 2
+                | playerMove == 3 | playerMove == 4 | playerMove == 5
+                | playerMove == 6 | playerMove == 7 | playerMove == 8)) {
+            throw new XOGameOutOfBoundsException();
         }
-
-        return cellExist;
-    }
-
-    //  метод поиска ячейки соотв-ей ходу игрока
-    private static int findCellByCords(String move) {
-        int cellNumb = 0;
-
-        for (int i = 0; i < 9; i++) {
-            String cellNumber = Integer.toString(Board.getCellList().get(i).getCellName());
-            if (cellNumber.equals(move)){
-                cellNumb = i;
-            }
-        }
-
-        return cellNumb;
+        return playerMove;
     }
 
     //  метод проверка "занятости" ячейки
@@ -180,23 +178,5 @@ public class GameEngine {
         }
 
         return haveWinnerHelp;
-    }
-
-    //  метод создания массива очередности ходов игроков
-    private static int[] playersMoveTurnBuilder() {
-        int[] playersMovesTurn = new int[FULL_BOARD_SIZE];
-        int playerMoveStep = 1;
-
-        for (int i = 0; i < FULL_BOARD_SIZE; i++) {
-
-            if (playerMoveStep == 0) {
-                playerMoveStep = 1;
-            } else {
-                playerMoveStep = 0;
-            }
-            playersMovesTurn[i] = playerMoveStep;
-        }
-
-        return playersMovesTurn;
     }
 }
