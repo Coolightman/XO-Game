@@ -1,23 +1,11 @@
 package com.coolightman.model;
 
 public class Player {
-    private String namePlayer;
-    private String figurePlayer;
+    private final String namePlayer;
+    private final String figurePlayer;
 
-    Player(PlayerBuilder playerBuilder) {
-        this.namePlayer = playerBuilder.getName();
-        this.figurePlayer = playerBuilder.getFigure();
-    }
-
-    public void setNamePlayer(String namePlayer) {
+    public Player(String namePlayer, String figurePlayer) {
         this.namePlayer = namePlayer;
-    }
-
-    public String getNamePlayer() {
-        return namePlayer;
-    }
-
-    public String getPlayerFigure() {
-        return figurePlayer;
+        this.figurePlayer = figurePlayer;
     }
 }
