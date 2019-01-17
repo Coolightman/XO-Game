@@ -14,7 +14,6 @@ public class GameEngine {
     private static int FULL_BOARD_SIZE = Board.getFullBoardSize();
 
     public static void start() {
-        createModels();
         runGameProcess();
     }
 
@@ -54,26 +53,24 @@ public class GameEngine {
         if (!haveWinner & moveCounter == 9) {
             System.out.println("Draw! We have not winner =(");
             return true;
-        }
-        else return haveWinner;
+        } else return haveWinner;
     }
 
     private static boolean checkWinner(int moveCounter, Figure figure) {
 //        5 - min moves for check winner
         if (moveCounter >= 5 & checkWinnerCombination()) {
             String winPlayerName = receiveWinPlayerName(figure);
-            System.out.println("Congratulation!"+winPlayerName+" is WIN!");
+            System.out.println("Congratulation!" + winPlayerName + " is WIN!");
             return true;
-        }
-        else return false;
+        } else return false;
     }
 
     private static String receiveWinPlayerName(Figure figure) {
         String winPlayerName = null;
 
-        if (figure.equals(Figure.X)){
+        if (figure.equals(Figure.X)) {
             winPlayerName = players[0].getNamePlayer();
-        }else if (figure.equals(Figure.O)){
+        } else if (figure.equals(Figure.O)) {
             winPlayerName = players[1].getNamePlayer();
         }
         return winPlayerName;
@@ -129,10 +126,14 @@ public class GameEngine {
         }
     }
 
-    private static void createModels() {
+    public static void createBoard() {
+        Board.createBoard();
+        System.out.println(Board.getCellList().size());
+    }
+
+    public static void createPlayers() {
         players[0] = new Player("Player_1", Figure.X);
         players[1] = new Player("Player_2", Figure.O);
-        Board.createBoard();
     }
 
     private static int getPlayerMove() throws XOGameOutOfBoundsException {
@@ -207,5 +208,9 @@ public class GameEngine {
         }
 
         return haveWinnerHelp;
+    }
+
+    public static Player[] getPlayers() {
+        return players;
     }
 }

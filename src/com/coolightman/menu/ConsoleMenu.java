@@ -1,8 +1,6 @@
 package com.coolightman.menu;
 
 import com.coolightman.engine.GameEngine;
-import com.coolightman.model.Board;
-import com.coolightman.model.Figure;
 
 import java.util.Scanner;
 
@@ -10,51 +8,47 @@ public class ConsoleMenu {
 
     public static void startConsoleMenu() {
         System.out.println("XO Game");
-        printMenu();
+        GameEngine.createPlayers();
+        showMainMenu();
     }
 
-    private static void printMenu(){
-        boolean gameWasFinished;
-        do {
-            gameWasFinished=checkGameEnd();
+    private static void showMainMenu() {
+        GameEngine.createBoard();
+
+        if (gameProcessWorking()) {
+            showMainMenu();
         }
-        while (!gameWasFinished);
     }
 
-    private static boolean checkGameEnd() {
-        boolean menuWorkWasDid = false;
-
+    private static boolean gameProcessWorking() {
         printConsoleMenu();
-        String menuChoice = getMenuChoice();
+        int menuChoice = getMenuChoice();
 
         switch (menuChoice) {
-            case "1":
+            case 1:
                 boolean wannaRepeat;
 
-//                do {
+                do {
                     GameEngine.start();
-//                    wannaRepeat = repeatGame(game);
-//                }
-//                while (wannaRepeat);
+                    wannaRepeat = repeatGame();
+                }
+                while (wannaRepeat);
+                return false;
 
-                menuWorkWasDid = true;
-                break;
+            case 2:
+                setPlayersNames();
+                return true;
 
-            case "2":
-//                setPlayersNames(game);
-                break;
-
-            case "3":
+            case 3:
                 System.out.println("Game end! Bye!");
-                menuWorkWasDid = true;
-                break;
+                return false;
 
             default:
                 System.out.print(
                         "Choose another menu item!\n" +
                                 ">");
+                return true;
         }
-        return menuWorkWasDid;
     }
 
     private static void printConsoleMenu() {
@@ -66,28 +60,35 @@ public class ConsoleMenu {
                         ">");
     }
 
-    private static String getMenuChoice() {
-        String menuChoice;
+    private static int getMenuChoice() {
+        int menuChoice=-1;
 
         Scanner scanner = new Scanner(System.in);
-        menuChoice = scanner.next();
+
+        try {
+            menuChoice = scanner.nextInt();
+        } catch (Exception e) {
+            System.out.println("Wrong menu format! Try again:\n" +
+                    ">");
+            getMenuChoice();
+        }
 
         return menuChoice;
     }
 
-//    private static void setPlayersNames() {
-//        Scanner scanner = new Scanner(System.in);
-//
-//        System.out.println("Choose Player 1 name:");
-//
-//        String namePlayer1 = scanner.next();
-//        pl.getPlayersList().get(0).setNamePlayer(namePlayer1);
-//
-//        System.out.println("Choose Player 2 name:");
-//
-//        String namePlayer2 = scanner.next();
-//        game.getPlayersList().get(1).setNamePlayer(namePlayer2);
-//    }
+    private static void setPlayersNames() {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("Choose Player_1 name:\n" +
+                ">");
+        String namePlayer1 = scanner.next();
+        GameEngine.getPlayers()[0].setNamePlayer(namePlayer1);
+
+        System.out.println("Choose Player_2 name:\n" +
+                ">");
+        String namePlayer2 = scanner.next();
+        GameEngine.getPlayers()[1].setNamePlayer(namePlayer2);
+    }
 
     private static boolean repeatGame() {
         System.out.print(
@@ -96,28 +97,21 @@ public class ConsoleMenu {
                         "2-No. Exit.\n" +
                         ">");
 
-        String menuChoice = getMenuChoice();
-
-        boolean wannaRepeat = true;
+        int menuChoice = getMenuChoice();
 
         switch (menuChoice) {
-            case "1":
-//               обнуляем все ячейки в поле
-                for (int i = 0; i < 9; i++) {
-                    Board.getCellList().get(i).setFigure(Figure.EMPTY);
-                }
-                break;
+            case 1:
+                showMainMenu();
+                return true;
 
-            case "2":
-                System.out.println("Goodbye! See ya later =)");
-                wannaRepeat = false;
-                break;
+            case 2:
+                return false;
 
             default:
                 System.out.print(
                         "Choose another menu item!\n" +
                                 ">");
+                return true;
         }
-        return wannaRepeat;
     }
 }

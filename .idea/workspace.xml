@@ -2,12 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="be5d5ea5-b366-449b-b213-70eaf715a5a5" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/coolightman/exceptions/XOBusyCellException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/com/coolightman/model/BoardTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/XOGame/com/coolightman/menu/ConsoleMenu.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/XOGame/com/coolightman/menu/ConsoleMenu.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/coolightman/engine/GameEngine.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/coolightman/engine/GameEngine.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/coolightman/exceptions/XOBusyCellException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/coolightman/exceptions/XOBusyCellException.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/coolightman/exceptions/XOGameOutOfBoundsException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/coolightman/exceptions/XOGameOutOfBoundsException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/coolightman/menu/ConsoleMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/coolightman/menu/ConsoleMenu.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -17,7 +18,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="CoverageDataManager">
-    <SUITE FILE_PATH="coverage/XO_Game$All_in_XOGame.ic" NAME="All in XOGame Coverage Results" MODIFIED="1547642845717" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/XO_Game$All_in_XOGame.ic" NAME="All in XOGame Coverage Results" MODIFIED="1547714980383" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
     <SUITE FILE_PATH="coverage/XO_Game$PlayerTest_getNamePlayer.ic" NAME="PlayerTest.getNamePlayer Coverage Results" MODIFIED="1547635894085" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>com.coolightman.model.*</FILTER>
     </SUITE>
@@ -43,33 +44,82 @@
     <session id="-825019166">
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="java" value="990" />
+          <entry key="java" value="1545" />
+          <entry key="txt" value="33" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="990" />
+          <entry key="JAVA" value="1545" />
+          <entry key="PLAIN_TEXT" value="33" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="java" value="3" />
+          <entry key="java" value="14" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="JAVA" value="3" />
+          <entry key="JAVA" value="14" />
         </counts>
       </usages-collector>
     </session>
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/coolightman/model/Board.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="221">
+              <caret line="13" column="31" lean-forward="true" selection-start-line="13" selection-start-column="31" selection-end-line="13" selection-end-column="31" />
+              <folding>
+                <element signature="e#1048#1049#0" expanded="true" />
+                <element signature="e#1086#1087#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/tests/com/coolightman/model/BoardTest.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="306">
+              <caret line="22" column="38" selection-start-line="22" selection-start-column="38" selection-end-line="22" selection-end-column="38" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/tests/com/coolightman/model/CellTest.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="221">
+              <caret line="15" column="8" lean-forward="true" selection-start-line="15" selection-start-column="8" selection-end-line="15" selection-end-column="50" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/coolightman/menu/ConsoleMenu.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="255">
+              <caret line="15" column="25" selection-start-line="15" selection-start-column="25" selection-end-line="15" selection-end-column="25" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/coolightman/engine/GameEngine.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="170">
-              <caret line="17" column="25" lean-forward="true" selection-start-line="17" selection-start-column="25" selection-end-line="17" selection-end-column="25" />
+            <state relative-caret-position="278">
+              <caret line="130" column="55" selection-start-line="130" selection-start-column="55" selection-end-line="130" selection-end-column="55" />
+              <folding>
+                <element signature="e#494#495#0" expanded="true" />
+                <element signature="e#526#527#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -80,8 +130,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Enum" />
-        <option value="JUnit4 Test Class" />
         <option value="Class" />
+        <option value="JUnit4 Test Class" />
       </list>
     </option>
   </component>
@@ -103,19 +153,20 @@
         <option value="$PROJECT_DIR$/src/com/coolightman/Menu/ConsoleMenu.java" />
         <option value="$PROJECT_DIR$/src/com/coolightman/main/GameLauncher.java" />
         <option value="$PROJECT_DIR$/src/com/coolightman/model/PlayerBuilder.java" />
-        <option value="$PROJECT_DIR$/src/com/coolightman/model/Player.java" />
         <option value="$PROJECT_DIR$/src/com/coolightman/model/Figure.java" />
         <option value="$PROJECT_DIR$/tests/com/coolightman/model/PlayerTest.java" />
         <option value="$PROJECT_DIR$/src/com/coolightman/model/Cell.java" />
         <option value="$PROJECT_DIR$/src/com/coolightman/engine/Game.java" />
-        <option value="$PROJECT_DIR$/src/com/coolightman/menu/ConsoleMenu.java" />
         <option value="$PROJECT_DIR$/src/com/coolightman/model/Board.java" />
         <option value="$PROJECT_DIR$/tests/com/coolightman/model/CellTest.java" />
         <option value="$PROJECT_DIR$/src/com/coolightman/exceptions/XOException.java" />
         <option value="$PROJECT_DIR$/src/com/coolightman/exceptions/XOGameIOException.java" />
+        <option value="$PROJECT_DIR$/src/com/coolightman/model/Player.java" />
         <option value="$PROJECT_DIR$/src/com/coolightman/exceptions/XOBusyCellException.java" />
         <option value="$PROJECT_DIR$/src/com/coolightman/exceptions/XOGameOutOfBoundsException.java" />
+        <option value="$PROJECT_DIR$/src/com/coolightman/menu/ConsoleMenu.java" />
         <option value="$PROJECT_DIR$/src/com/coolightman/engine/GameEngine.java" />
+        <option value="$PROJECT_DIR$/tests/com/coolightman/model/BoardTest.java" />
       </list>
     </option>
   </component>
@@ -281,7 +332,7 @@
     <property name="Repository.Attach.Sources" value="false" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1547647787446" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1547714977694" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit4" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit4" value="" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
@@ -423,7 +474,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.GameLauncher">
+  <component name="RunManager" selected="JUnit.All in XOGame">
     <configuration name="GameLauncher" type="Application" factoryName="Application" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.coolightman.main.GameLauncher" />
       <module name="XOGame" />
@@ -441,6 +492,20 @@
       <module name="XOGame" />
       <option name="PACKAGE_NAME" value="" />
       <option name="TEST_OBJECT" value="package" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="BoardTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="XOGame" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.coolightman.model.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.coolightman.model" />
+      <option name="MAIN_CLASS_NAME" value="com.coolightman.model.BoardTest" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -478,10 +543,12 @@
       <item itemvalue="JUnit.PlayerTest" />
       <item itemvalue="JUnit.CellTest" />
       <item itemvalue="JUnit.All in XOGame" />
+      <item itemvalue="JUnit.BoardTest" />
     </list>
     <recent_temporary>
       <list>
         <item itemvalue="JUnit.All in XOGame" />
+        <item itemvalue="JUnit.BoardTest" />
         <item itemvalue="JUnit.CellTest" />
         <item itemvalue="JUnit.PlayerTest" />
       </list>
@@ -619,16 +686,17 @@
       <option name="project" value="LOCAL" />
       <updated>1547638938350</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="end engine game architecture">
+      <created>1547709997301</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1547709997301</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="PlayerTest_getNamePlayer - 2019.01.16 at 13h 51m 36s.xml">
-      <configuration name="PlayerTest.getNamePlayer" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="PlayerTest - 2019.01.16 at 13h 57m 13s.xml">
-      <configuration name="PlayerTest" configurationId="JUnit" />
-    </history-entry>
     <history-entry file="PlayerTest - 2019.01.16 at 13h 58m 58s.xml">
       <configuration name="PlayerTest" configurationId="JUnit" />
     </history-entry>
@@ -650,6 +718,15 @@
     <history-entry file="All_in_XOGame - 2019.01.16 at 20h 46m 54s.xml">
       <configuration name="All in XOGame" configurationId="JUnit" />
     </history-entry>
+    <history-entry file="BoardTest - 2019.01.17 at 11h 43m 13s.xml">
+      <configuration name="BoardTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="BoardTest - 2019.01.17 at 11h 44m 47s.xml">
+      <configuration name="BoardTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="BoardTest - 2019.01.17 at 11h 45m 54s.xml">
+      <configuration name="BoardTest" configurationId="JUnit" />
+    </history-entry>
   </component>
   <component name="TimeTrackingManager">
     <option name="totallyTimeSpent" value="16129000" />
@@ -664,10 +741,9 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="1943" y="95" width="1049" height="927" extended-state="1" />
-    <editor active="true" />
+    <frame x="1943" y="95" width="1049" height="927" extended-state="0" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.48039216" visible="true" weight="0.2032356" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.48039216" visible="true" weight="0.2032356" />
       <window_info id="Structure" order="1" sideWeight="0.51960784" side_tool="true" weight="0.2234461" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -685,7 +761,7 @@
       <window_info anchor="bottom" id="Database Changes" order="8" show_stripe_button="false" />
       <window_info anchor="bottom" id="Terminal" order="9" sideWeight="0.49915397" weight="0.32768363" />
       <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.500846" side_tool="true" weight="0.6002191" />
-      <window_info anchor="bottom" id="Messages" order="11" weight="0.32968238" />
+      <window_info anchor="bottom" id="Messages" order="11" weight="0.32965687" />
       <window_info anchor="right" id="Coverage" order="0" side_tool="true" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="1" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="2" weight="0.25" />
@@ -700,8 +776,8 @@
       <window_info anchor="right" id="Maven" order="11" />
     </layout>
     <layout-to-restore>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.48343557" visible="true" weight="0.1949807" />
-      <window_info id="Structure" order="1" sideWeight="0.5165644" side_tool="true" weight="0.18912338" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.48039216" visible="true" weight="0.2032356" />
+      <window_info id="Structure" order="1" sideWeight="0.51960784" side_tool="true" weight="0.2234461" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
       <window_info id="UI Designer" order="4" />
@@ -709,7 +785,7 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.32735962" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.3259804" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.39978093" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -718,7 +794,7 @@
       <window_info anchor="bottom" id="Database Changes" order="8" show_stripe_button="false" />
       <window_info anchor="bottom" id="Terminal" order="9" sideWeight="0.49915397" weight="0.32768363" />
       <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.500846" side_tool="true" weight="0.6002191" />
-      <window_info anchor="bottom" id="Messages" order="11" weight="0.32968238" />
+      <window_info anchor="bottom" id="Messages" order="11" weight="0.32965687" />
       <window_info anchor="right" id="Coverage" order="0" side_tool="true" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="1" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="2" weight="0.25" />
@@ -746,7 +822,8 @@
     <MESSAGE value="rebuild model Player end" />
     <MESSAGE value="build test for Player model" />
     <MESSAGE value="Change project structure" />
-    <option name="LAST_COMMIT_MESSAGE" value="Change project structure" />
+    <MESSAGE value="end engine game architecture" />
+    <option name="LAST_COMMIT_MESSAGE" value="end engine game architecture" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -775,46 +852,13 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/coolightman/main/GameLauncher.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" column="13" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/coolightman/model/Cell.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="8" column="37" lean-forward="true" selection-start-line="8" selection-start-column="37" selection-end-line="8" selection-end-column="37" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/coolightman/engine/Game.java" />
-    <entry file="file://$PROJECT_DIR$/tests/com/coolightman/model/CellTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="6" column="23" lean-forward="true" selection-start-line="6" selection-start-column="23" selection-end-line="6" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/tests/com/coolightman/model/PlayerTest.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="289">
           <caret line="19" column="35" selection-start-line="19" selection-start-column="35" selection-end-line="19" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/coolightman/model/Player.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="13" column="5" lean-forward="true" selection-start-line="13" selection-start-column="5" selection-end-line="13" selection-end-column="5" />
           <folding>
-            <element signature="e#306#307#0" expanded="true" />
-            <element signature="e#339#340#0" expanded="true" />
-            <element signature="e#378#379#0" expanded="true" />
-            <element signature="e#413#414#0" expanded="true" />
-            <element signature="e#465#466#0" expanded="true" />
-            <element signature="e#509#510#0" expanded="true" />
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -830,24 +874,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/coolightman/menu/ConsoleMenu.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="470">
-          <caret line="95" column="41" selection-start-line="95" selection-start-column="41" selection-end-line="95" selection-end-column="41" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/coolightman/model/Board.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="13" column="31" selection-start-line="13" selection-start-column="31" selection-end-line="13" selection-end-column="31" />
-          <folding>
-            <element signature="e#1048#1049#0" expanded="true" />
-            <element signature="e#1086#1087#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/coolightman/exceptions/XOException.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="34">
@@ -855,32 +881,92 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/coolightman/exceptions/XOBusyCellException.java">
+    <entry file="file://$PROJECT_DIR$/src/com/coolightman/model/Player.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" column="48" selection-start-line="5" selection-start-column="48" selection-end-line="5" selection-end-column="48" />
+        <state relative-caret-position="136">
+          <caret line="8" column="41" lean-forward="true" selection-start-line="8" selection-start-column="41" selection-end-line="8" selection-end-column="41" />
           <folding>
-            <element signature="e#136#137#0" expanded="true" />
-            <element signature="e#177#178#0" expanded="true" />
+            <element signature="e#306#307#0" expanded="true" />
+            <element signature="e#339#340#0" expanded="true" />
+            <element signature="e#378#379#0" expanded="true" />
+            <element signature="e#413#414#0" expanded="true" />
+            <element signature="e#465#466#0" expanded="true" />
+            <element signature="e#509#510#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/coolightman/main/GameLauncher.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="4" column="13" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/coolightman/exceptions/XOGameOutOfBoundsException.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="9" lean-forward="true" selection-start-line="9" selection-end-line="9" />
+        <state relative-caret-position="119">
+          <caret line="7" column="20" lean-forward="true" selection-start-line="7" selection-start-column="20" selection-end-line="7" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/coolightman/exceptions/XOBusyCellException.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" column="19" selection-start-line="6" selection-start-column="19" selection-end-line="6" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/coolightman/model/Cell.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="8" column="37" lean-forward="true" selection-start-line="8" selection-start-column="37" selection-end-line="8" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/com/coolightman/model/CellTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="15" column="8" lean-forward="true" selection-start-line="15" selection-start-column="8" selection-end-line="15" selection-end-column="50" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/coolightman/menu/ConsoleMenu.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="15" column="25" selection-start-line="15" selection-start-column="25" selection-end-line="15" selection-end-column="25" />
           <folding>
-            <element signature="e#145#146#0" expanded="true" />
-            <element signature="e#222#223#0" expanded="true" />
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/coolightman/engine/GameEngine.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="17" column="25" lean-forward="true" selection-start-line="17" selection-start-column="25" selection-end-line="17" selection-end-column="25" />
+        <state relative-caret-position="278">
+          <caret line="130" column="55" selection-start-line="130" selection-start-column="55" selection-end-line="130" selection-end-column="55" />
+          <folding>
+            <element signature="e#494#495#0" expanded="true" />
+            <element signature="e#526#527#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/coolightman/model/Board.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="13" column="31" lean-forward="true" selection-start-line="13" selection-start-column="31" selection-end-line="13" selection-end-column="31" />
+          <folding>
+            <element signature="e#1048#1049#0" expanded="true" />
+            <element signature="e#1086#1087#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/com/coolightman/model/BoardTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="22" column="38" selection-start-line="22" selection-start-column="38" selection-end-line="22" selection-end-column="38" />
         </state>
       </provider>
     </entry>
@@ -890,6 +976,17 @@
       <state key="ProjectJDKs.UI">
         <settings>
           <last-edited>8</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ScopeChooserConfigurable.UI">
+        <settings>
           <splitter-proportions>
             <option name="proportions">
               <list>
