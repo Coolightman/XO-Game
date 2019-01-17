@@ -36,6 +36,12 @@ public class Board {
                 "|6|7|8|");
     }
 
+    public static void clean(){
+        for (int i = 0; i < FULL_BOARD_SIZE; i++) {
+            cellList.get(i).setFigure(Figure.EMPTY);
+        }
+    }
+
     public static ArrayList<Cell> getCellList() {
         return cellList;
     }

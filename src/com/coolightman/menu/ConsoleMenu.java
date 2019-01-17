@@ -1,6 +1,7 @@
 package com.coolightman.menu;
 
 import com.coolightman.engine.GameEngine;
+import com.coolightman.model.Board;
 
 import java.util.Scanner;
 
@@ -8,12 +9,13 @@ public class ConsoleMenu {
 
     public static void startConsoleMenu() {
         System.out.println("XO Game");
-        GameEngine.createPlayers();
+        GameEngine.createModels();
         showMainMenu();
+        System.out.println("Bye!");
     }
 
     private static void showMainMenu() {
-        GameEngine.createBoard();
+        Board.clean();
 
         if (gameProcessWorking()) {
             showMainMenu();
@@ -26,13 +28,15 @@ public class ConsoleMenu {
 
         switch (menuChoice) {
             case 1:
-                boolean wannaRepeat;
-
-                do {
-                    GameEngine.start();
-                    wannaRepeat = repeatGame();
+                GameEngine.start();
+                System.out.print(
+                        "Do you wan't repeat XO Game?\n" +
+                                "1-Yes\n" +
+                                "2-No. Exit.\n" +
+                                ">");
+                if (repeatGame()) {
+                    showMainMenu();
                 }
-                while (wannaRepeat);
                 return false;
 
             case 2:
@@ -40,7 +44,6 @@ public class ConsoleMenu {
                 return true;
 
             case 3:
-                System.out.println("Game end! Bye!");
                 return false;
 
             default:
@@ -91,17 +94,10 @@ public class ConsoleMenu {
     }
 
     private static boolean repeatGame() {
-        System.out.print(
-                "Do you wan't repeat XO Game?\n" +
-                        "1-Yes\n" +
-                        "2-No. Exit.\n" +
-                        ">");
-
         int menuChoice = getMenuChoice();
 
         switch (menuChoice) {
             case 1:
-                showMainMenu();
                 return true;
 
             case 2:
@@ -111,6 +107,7 @@ public class ConsoleMenu {
                 System.out.print(
                         "Choose another menu item!\n" +
                                 ">");
+                repeatGame();
                 return true;
         }
     }

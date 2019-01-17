@@ -126,12 +126,8 @@ public class GameEngine {
         }
     }
 
-    public static void createBoard() {
+    public static void createModels() {
         Board.createBoard();
-        System.out.println(Board.getCellList().size());
-    }
-
-    public static void createPlayers() {
         players[0] = new Player("Player_1", Figure.X);
         players[1] = new Player("Player_2", Figure.O);
     }
