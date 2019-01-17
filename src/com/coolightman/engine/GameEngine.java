@@ -119,10 +119,12 @@ public class GameEngine {
 
     private static void printCurrentPlayerText(Figure figure) {
         if (figure.equals(Figure.X)) {
-            System.out.println(players[0].getNamePlayer() + " do your move:");
+            System.out.println(players[0].getNamePlayer() + " do your move:\n" +
+                    ">");
         }
         if (figure.equals(Figure.O)) {
-            System.out.println(players[1].getNamePlayer() + " do your move:");
+            System.out.println(players[1].getNamePlayer() + " do your move:\n" +
+                    ">");
         }
     }
 
