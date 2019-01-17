@@ -1,5 +1,6 @@
 package com.coolightman.engine;
 
+import com.coolightman.exceptions.XOBusyCellException;
 import com.coolightman.exceptions.XOGameOutOfBoundsException;
 import com.coolightman.model.Board;
 import com.coolightman.model.Figure;
@@ -18,48 +19,82 @@ public class GameEngine {
     }
 
     private static void runGameProcess() {
-        Board.printBoardExample();
         boolean haveWinner;
+        boolean figureIsAddedOnBoard;
         int moveCounter = 0;
         Figure figureOfPlayer = Figure.O;
 
+//        Work algorithm:
+//        1. Receive X or O from turn of moves;
+//        2. Get move from player;
+//        3. Add player move on board;
+//        4. check for win after 5 moves;
+//        5. check for draw;
+
+        Board.printBoardExample();
         do {
-            figureOfPlayer = receiveFigureFromMove(figureOfPlayer);
-            boolean figureIsAddedOnBoard;
+            figureOfPlayer = receiveFigureFromTurn(figureOfPlayer);
 
             do {
                 int playerMove = getValidPlayerMove();
-//                TODO exception for busy cell
-                if (checkingCellEmpty(playerMove)) {
-                    Board.getCellList().get(playerMove).setFigure(figureOfPlayer);
-                    figureIsAddedOnBoard = true;
-                } else {
-                    figureIsAddedOnBoard = false;
-                }
+                figureIsAddedOnBoard = addPlayerMoveOnBoard(playerMove, figureOfPlayer);
             } while (!figureIsAddedOnBoard);
 
             Board.printBoard();
             moveCounter++;
-
-            if (moveCounter > 4 & checkWinner()) {
-                haveWinner = true;
-                System.out.println("Congratulation! ... is WIN!");
-                break;
-            } else {
-                haveWinner = false;
-            }
-
-//          проверяем на ничью
-            if (!haveWinner & moveCounter == 9) {
-                System.out.println("We have not winner =(");
-                break;
-            }
+            haveWinner = checkWinner(moveCounter, figureOfPlayer);
+            haveWinner = checkDraw(moveCounter, haveWinner);
         }
         while (!haveWinner);
-        System.out.println("Game End\n");
+
+        System.out.println("Game End");
     }
 
-    private static Figure receiveFigureFromMove(Figure figureOfPlayer) {
+    private static boolean checkDraw(int moveCounter, boolean haveWinner) {
+        if (!haveWinner & moveCounter == 9) {
+            System.out.println("Draw! We have not winner =(");
+            return true;
+        }
+        else return haveWinner;
+    }
+
+    private static boolean checkWinner(int moveCounter, Figure figure) {
+//        5 - min moves for check winner
+        if (moveCounter >= 5 & checkWinnerCombination()) {
+            String winPlayerName = receiveWinPlayerName(figure);
+            System.out.println("Congratulation!"+winPlayerName+" is WIN!");
+            return true;
+        }
+        else return false;
+    }
+
+    private static String receiveWinPlayerName(Figure figure) {
+        String winPlayerName = null;
+
+        if (figure.equals(Figure.X)){
+            winPlayerName = players[0].getNamePlayer();
+        }else if (figure.equals(Figure.O)){
+            winPlayerName = players[1].getNamePlayer();
+        }
+        return winPlayerName;
+    }
+
+    private static boolean addPlayerMoveOnBoard(int playerMove, Figure figureOfPlayer) {
+        try {
+            checkingCellEmpty(playerMove);
+            addFigureOnBoard(playerMove, figureOfPlayer);
+            return true;
+        } catch (XOBusyCellException e) {
+            System.out.println(e.getMessage());
+            return false;
+        }
+    }
+
+    private static void addFigureOnBoard(int playerMove, Figure figure) {
+        Board.getCellList().get(playerMove).setFigure(figure);
+    }
+
+    private static Figure receiveFigureFromTurn(Figure figureOfPlayer) {
         if (figureOfPlayer.equals(Figure.X)) {
             figureOfPlayer = Figure.O;
         } else {
@@ -125,21 +160,15 @@ public class GameEngine {
     }
 
     //  метод проверка "занятости" ячейки
-    private static boolean checkingCellEmpty(int cellNumb) {
-        boolean cellIsEmpty;
+    private static void checkingCellEmpty(int cellNumb) throws XOBusyCellException {
 
-        if (Board.getCellList().get(cellNumb).getFigure().equals(Figure.EMPTY)) {
-            cellIsEmpty = true;
-        } else {
-            System.out.println("Cell is busy, try again:");
-            cellIsEmpty = false;
+        if (!Board.getCellList().get(cellNumb).getFigure().equals(Figure.EMPTY)) {
+            throw new XOBusyCellException();
         }
-
-        return cellIsEmpty;
     }
 
     //  метод проверки наличия победителя
-    private static boolean checkWinner() {
+    private static boolean checkWinnerCombination() {
         boolean haveWinner = false;
 
 //      выйгрышные комбинации
